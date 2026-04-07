@@ -1,0 +1,86 @@
+body{/**display: flex; align-items: center; justify-content: center;**/ margin:0; background:url("images/iti.jpg"); height: 100%; background-color: #00ffaa;
+  background-size:cover; backdrop-filter:blur(6px); background-position: center;  height: 100%; width: auto; object-fit: contain;
+}
+
+.container{height: 100vh; width:100vw; }
+        
+ .container .images{margin:2px; padding-top:23px;}
+ 
+ .images{width:100%; display:flex; flex-wrap:wrap; justify-content:center;}
+ 
+ .container .images .image-box{position:relative; height:300px; width:210px; border-radius:13px; overflow:hidden; margin:19px;
+   box-shadow: 30px 30px 60px;
+ }
+
+ .images .image-box img{height:100%; width:100%; border-radius:13px; transition:all .3s linear; display:block; object-fit:cover; }
+   
+ .image-box:hover img{transform:scale(1.09);}
+ 
+ @media (max-width: 600px){
+  .container .images .image-box{
+    width: calc(50% - 30px); /* mobile me 2 images */
+    margin: 10px;
+    height: 210px;
+  }
+}
+
+
+#lightbox {
+  position: absolute;
+  left: 0 ;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: none; /* JS isse flex kar dega */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Sabse high priority */
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+  /* Box shadow taaki image ubhar kar dikhe */
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+
+
+.image-box{opacity: 0; transform: translateY(60px);
+transition: all 0.6s ease; }
+
+.image-box.show{opacity: 1; transform: translateY(0);}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar{
+  background: #111;
+  padding: 15px;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 6px 12px;
+  transition: 0.3s;
+}
+
+.navbar a:hover{
+  background: #00ffaa;
+  color: black;
+  border-radius: 5px;
+}
+
+
+.heading{display: block; width: 100%; height: 35px; text-align: center; background-color: #111; color: #00ffaa;}
+
+h2{text-align: center; font-size: 60px; font-family: "helvetica Neue"; color: rgb(247, 27, 100); font-style:oblique;
+text-decoration: underline black; margin: 4px; text-underline-offset: 9px; }

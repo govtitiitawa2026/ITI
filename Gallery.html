@@ -1,0 +1,243 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="gallery.css">
+  </head>
+  <body>
+
+  <h2>THE COLLECTION OF MEMORIES </h2>
+    <div class="container">
+      <div class="images">
+        
+        <div class="image-box">
+          <img src="images/EV17.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV16.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV15.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/lab1.jpg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/lab2.jpg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/lab3.jpg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/lab4.jpg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV14.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV13.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV12.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV11.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV10.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV9.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV8.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV7.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV6.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV5.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV4.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV3.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV2.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/EV1.jpeg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/iti01.jpg"  alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/gym.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/I BATCH ITI.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa.png" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa01.jpg" alt="">
+        </div>
+
+        
+        <div class="image-box">
+          <img src="images/copa02.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa03.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa04.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa06.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/copa14.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/Copa.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/Copa.png" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/dmc01.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/dmc02.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/dmc03.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/dmc04.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/dmc05.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/dmc06.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/elec01.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/elec02.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/elec03.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/elec04.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/event11.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/event12.jpg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="images/event13.jpg" alt="">
+        </div>
+      </div>
+    </div>
+        <div id="lightbox" onclick="closeImg()">
+  <img id="lightboxImg">
+</div>
+    <script>const images = document.querySelectorAll(".image-box img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+// Zoom aur Move ke liye variables
+let scale = 1;
+let isDragging = false;
+let startX, startY, translateX = 0, translateY = 0;
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    
+    // Purana Scroll Logic (Taaki position sahi rahe)
+    lightbox.style.top = window.scrollY + "px"; 
+    
+    lightboxImg.src = img.src;
+    document.body.style.overflow = "hidden";
+
+    // Reset Zoom & Position jab naya photo khule
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    applyTransform();
+  });
+});
+
+// 1. Mouse Wheel Zoom Feature
+lightbox.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  const delta = e.deltaY > 0 ? -0.2 : 0.2;
+  scale = Math.min(Math.max(1, scale + delta), 5); // 1x se 5x tak zoom
+  applyTransform();
+}, { passive: false });
+
+// 2. Mouse Drag (Move) Feature
+lightboxImg.addEventListener("mousedown", (e) => {
+  if (scale > 1) {
+    isDragging = true;
+    startX = e.clientX - translateX;
+    startY = e.clientY - translateY;
+    lightboxImg.style.cursor = "grabbing";
+  }
+});
+
+window.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  translateX = e.clientX - startX;
+  translateY = e.clientY - startY;
+  applyTransform();
+});
+
+window.addEventListener("mouseup", () => {
+  isDragging = false;
+  if(lightboxImg) lightboxImg.style.cursor = "zoom-in";
+});
+
+// Transform Apply karne ka function
+function applyTransform() {
+  lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+}
+
+// Lightbox band karne ka purana logic
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+});
+
+// --- Intersection Observer (Aapka Animation Logic) ---
+const reveals = document.querySelectorAll(".image-box");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if(entry.isIntersecting){
+      entry.target.style.transitionDelay = `${index * 0.15}s`;
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{ threshold: 0.2 });
+reveals.forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
