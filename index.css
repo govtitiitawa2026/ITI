@@ -102,7 +102,7 @@ section .designer img.full-size{position:fixed; top:0; left:0; width:100vw; heig
 
   /**---mobile ke anurup site ka design---
   website ka 2nd design mobile --mode---**/ 
- @media (max-width:800px){
+ @media (max-width:600px){
    .nav{background-color: crimson;
    padding: 0 5vw; height:45px; z-index: 999;}
    
